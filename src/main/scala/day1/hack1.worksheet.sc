@@ -10,3 +10,5 @@ def splitIntoElves(input: List[String]): List[List[Int]] =
     else input.takeWhile(_.toIntOption.isDefined).map(_.toInt) :: splitIntoElves(input.dropWhile(_.toIntOption.isDefined).drop(1))
 
 splitIntoElves(lines).foldLeft(0)((best, elf) => math.max(elf.sum,best) )
+
+splitIntoElves(lines).map(l => l.sum).sorted(Ordering[Int].reverse).take(3).sum
